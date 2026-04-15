@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erasmus+ · IES Comuneros de Castilla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #1c3d7c;
+    --blue-mid: #2a5298;
+    --gold: #e8a020;
+    --gold-light: #f5c55a;
+    --eu-blue: #003399;
+    --eu-gold: #ffcc00;
+    --white: #ffffff;
+    --off-white: #f4f6fb;
+    --gray-light: #e8ecf4;
+    --gray-mid: #8a96a8;
+    --text: #1a2535;
+    --text-light: #4a5568;
+    --green: #1a7a4a;
+    --green-light: #d1fae5;
+    --amber: #b45309;
+    --amber-light: #fef3c7;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #0a1628 0%, #1c3d7c 50%, #0a1628 100%);
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,204,0,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0,51,153,0.4) 0%, transparent 60%);
+  }
+
+  .star-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .eu-stars {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    width: 60px;
+    opacity: 0.6;
+  }
+  .eu-stars span {
+    color: var(--eu-gold);
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .hero-badge {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,204,0,0.12);
+    border: 1px solid rgba(255,204,0,0.3);
+    color: var(--eu-gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.1;
+    animation: fadeDown 0.8s 0.15s ease both;
+  }
+
+  .hero-title span {
+    color: var(--eu-gold);
+  }
+
+  .hero-sub {
+    position: relative;
+    z-index: 2;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-top: 1.2rem;
+    animation: fadeDown 0.8s 0.3s ease both;
+  }
+
+  .hero-accreditation {
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 0.8rem 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    animation: fadeDown 0.8s 0.45s ease both;
+  }
+
+  .hero-accreditation .badge-dot {
+    width: 8px; height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
+    50% { box-shadow: 0 0 0 7px rgba(34,197,94,0.1); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeDown 1s 1s ease both;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+
+  @keyframes scrollPulse {
+    0% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    100% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  }
+
+  /* ── NAV ── */
+  .main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,22,40,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 2rem;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0.8rem 0;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: rgba(255,255,255,0.55);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0.5rem 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-btn:hover {
+    background: rgba(255,255,255,0.07);
+    color: var(--white);
+    border-color: rgba(255,255,255,0.1);
+  }
+
+  .nav-btn.active {
+    background: rgba(232,160,32,0.15);
+    color: var(--gold);
+    border-color: rgba(232,160,32,0.3);
+  }
+
+  .nav-btn .nav-icon { font-size: 1rem; }
+
+  .nav-sepie {
+    margin-left: auto;
+    flex-shrink: 0;
+    background: var(--eu-blue);
+    border: none;
+    border-radius: 8px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .nav-sepie:hover {
+    background: #0040cc;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0,51,153,0.4);
+  }
+
+  /* ── SECTIONS ── */
+  .section-wrapper {
+    background: var(--off-white);
+    min-height: 100vh;
+  }
+
+  .section {
+    display: none;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px; height: 2px;
+    background: var(--blue-mid);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    max-width: 680px;
+    margin-top: 0.8rem;
+  }
+
+  /* ── QUÉ ES ERASMUS+ ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .info-grid { grid-template-columns: 1fr; }
+  }
+
+  .info-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid var(--gray-light);
+    transition: box-shadow 0.3s;
+  }
+
+  .info-card:hover {
+    box-shadow: 0 8px 30px rgba(10,22,40,0.08);
+  }
+
+  .info-card-icon {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 0.8rem;
+  }
+
+  .info-card p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.75;
+  }
+
+  .info-card.wide {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    color: white;
+  }
+
+  .info-card.wide .info-card-icon {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .info-card.wide h3 { color: var(--gold); }
+  .info-card.wide p { color: rgba(255,255,255,0.8); }
+
+  .bullet-list {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bullet-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .info-card.wide .bullet-list li { color: rgba(255,255,255,0.8); }
+
+  .bullet-list li::before {
+    content: '›';
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: -1px;
+  }
+
+  .acreditacion-banner {
+    background: linear-gradient(135deg, #003399 0%, #1c3d7c 100%);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .acreditacion-banner .icon-big { font-size: 3rem; flex-shrink: 0; }
+
+  .acreditacion-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--eu-gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .acreditacion-banner p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  /* ── NOTICIAS ── */
+  .coming-soon-panel {
+    background: var(--white);
+    border-radius: 20px;
+    border: 2px dashed var(--gray-light);
+    padding: 4rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .coming-soon-panel .cs-icon {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .coming-soon-panel h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+  }
+
+  .coming-soon-panel p {
+    color: var(--text-light);
+    max-width: 480px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  .coming-soon-panel .cs-badge {
+    background: var(--amber-light);
+    color: var(--amber);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(180,83,9,0.2);
+  }
+
+  .news-placeholder {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .news-skeleton {
+    background: var(--white);
+    border-radius: 14px;
+    border: 1px solid var(--gray-light);
+    overflow: hidden;
+    opacity: 0.5;
+  }
+
+  .sk-img { height: 140px; background: var(--gray-light); }
+  .sk-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; }
+  .sk-line { height: 12px; background: var(--gray-light); border-radius: 6px; }
+  .sk-line.w70 { width: 70%; }
+  .sk-line.w50 { width: 50%; }
+  .sk-line.w85 { width: 85%; }
+  .sk-line.w40 { width: 40%; }
+
+  /* ── CONVOCATORIAS ── */
+  .conv-empty {
+    background: var(--white);
+    border-radius: 16px;
+    border-left: 4px solid var(--gold);
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    box-shadow: 0 4px 20px rgba(10,22,40,0.05);
+  }
+
+  .conv-empty .ce-icon { font-size: 2.5rem; flex-shrink: 0; margin-top: 0.2rem; }
+
+  .conv-empty h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .conv-empty p {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .conv-timeline {
+    margin-top: 3rem;
+  }
+
+  .conv-timeline h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline-list::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: var(--gray-light);
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+
+  .tl-dot {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    z-index: 1;
+    position: relative;
+  }
+
+  .tl-dot.active {
+    background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+    box-shadow: 0 0 0 4px rgba(42,82,152,0.15);
+  }
+
+  .tl-content {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--gray-light);
+    flex: 1;
+  }
+
+  .tl-content h4 {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .tl-content p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+
+  /* ── MOVILIDADES ── */
+  .mobility-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--gray-light);
+    margin-bottom: 2.5rem;
+    transition: box-shadow 0.3s;
+  }
+
+  .mobility-card:hover {
+    box-shadow: 0 10px 40px rgba(10,22,40,0.1);
+  }
+
+  .mobility-header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue-mid) 100%);
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .mobility-flag {
+    font-size: 3rem;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  }
+
+  .mobility-meta { flex: 1; }
+
+  .mobility-meta .tag-tipo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(255,204,0,0.2);
+    color: var(--eu-gold);
+    border: 1px solid rgba(255,204,0,0.3);
+    padding: 0.25rem 0.8rem;
+    border-radius: 100px;
+    margin-bottom: 0.7rem;
+  }
+
+  .mobility-meta h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .mobility-meta .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .mobility-meta .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  .mobility-body {
+    padding: 2rem;
+  }
+
+  .mobility-body p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .mobility-body p:last-child { margin-bottom: 0; }
+
+  .mobility-participants {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid var(--gray-light);
+  }
+
+  .mobility-participants h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 0.8rem;
+  }
+
+  .participants-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .participant-chip {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 100px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.82rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .participant-chip.alumn {
+    background: rgba(42,82,152,0.07);
+    border-color: rgba(42,82,152,0.2);
+    color: var(--blue-mid);
+  }
+
+  .impact-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .impact-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    border: 1px solid rgba(26,122,74,0.2);
+  }
+
+  .mob-summary-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 600px) {
+    .mob-summary-bar { grid-template-columns: 1fr; }
+  }
+
+  .sum-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--gray-light);
+  }
+
+  .sum-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .sum-card .lbl {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-top: 0.3rem;
+  }
+
+  .sum-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+  /* ── SEPIE SECTION ── */
+  .sepie-section {
+    display: none;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .sepie-section.active { display: block; }
+
+  .sepie-card {
+    background: linear-gradient(135deg, var(--eu-blue) 0%, #1a5fd4 100%);
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sepie-card::before {
+    content: '★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★';
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: var(--eu-gold);
+    letter-spacing: 8px;
+    white-space: nowrap;
+  }
+
+  .sepie-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--eu-gold);
+    margin: 2rem 0 1rem;
+  }
+
+  .sepie-card p {
+    color: rgba(255,255,255,0.8);
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+  }
+
+  .sepie-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--eu-gold);
+    color: var(--eu-blue);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.9rem 2.5rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .sepie-link-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  }
+
+  .sepie-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .sepie-info-item {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--gray-light);
+    transition: box-shadow 0.2s;
+  }
+
+  .sepie-info-item:hover {
+    box-shadow: 0 6px 20px rgba(10,22,40,0.08);
+  }
+
+  .sepie-info-item .si-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .sepie-info-item h4 { font-weight: 600; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .sepie-info-item p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .site-footer a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .site-footer .eu-logo {
+    color: var(--eu-gold);
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .acreditacion-banner { flex-direction: column; }
+    .mobility-header { flex-direction: column; gap: 1rem; }
+    .nav-sepie .sepie-label { display: none; }
+    .sepie-card { padding: 2rem 1.5rem; }
+    .mob-summary-bar { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="eu-stars">
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    <span>★</span><span>★</span>
+  </div>
+
+  <div class="hero-badge">🇪🇺 Programa Erasmus+ · KA120-SCH</div>
+
+  <h1 class="hero-title">
+    IES Comuneros<br>de <span>Castilla</span>
+  </h1>
+
+  <p class="hero-sub">
+    Un centro comprometido con la educación europea, la inclusión y el desarrollo profesional de toda la comunidad educativa.
+  </p>
+
+  <div class="hero-accreditation">
+    <div class="badge-dot"></div>
+    Acreditación Erasmus+ en Educación Escolar activa hasta 2027
+  </div>
+
+  <div class="scroll-hint">Explorar</div>
+</section>
+
+<!-- NAVIGATION -->
+<nav class="main-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" data-section="que-es" onclick="showSection('que-es', this)">
+      <span class="nav-icon">🎓</span> ¿Qué es Erasmus+?
+    </button>
+    <button class="nav-btn" data-section="noticias" onclick="showSection('noticias', this)">
+      <span class="nav-icon">📰</span> Noticias
+    </button>
+    <button class="nav-btn" data-section="convocatorias" onclick="showSection('convocatorias', this)">
+      <span class="nav-icon">📋</span> Convocatorias
+    </button>
+    <button class="nav-btn" data-section="movilidades" onclick="showSection('movilidades', this)">
+      <span class="nav-icon">✈️</span> Movilidades
+    </button>
+    <a href="https://sepie.es" target="_blank" rel="noopener" class="nav-sepie">
+      <span>🔗</span> <span class="sepie-label">SEPIE</span>
+    </a>
+  </div>
+</nav>
+
+<!-- CONTENT WRAPPER -->
+<div class="section-wrapper">
+
+  <!-- SECTION: QUÉ ES ERASMUS+ -->
+  <div class="section active" id="que-es">
+    <div class="section-header">
+      <div class="section-tag">Programa Europeo</div>
+      <h2 class="section-title">¿Qué es Erasmus+?</h2>
+      <p class="section-desc">El programa de la Unión Europea para la educación, la formación, la juventud y el deporte, comprometido con mejorar la calidad educativa y fomentar la cooperación europea.</p>
+    </div>
+
+    <div class="acreditacion-banner">
+      <span class="icon-big">🏆</span>
+      <div>
+        <h3>Acreditación Erasmus+ KA120-SCH</h3>
+        <p>El IES Comuneros de Castilla cuenta con acreditación Erasmus+ en Educación Escolar (KA120-SCH), reconociendo su compromiso con un proyecto europeo estable y de calidad <strong style="color:white">hasta 2027</strong>. Nuestro Plan Erasmus se centra especialmente en la <strong style="color:white">inclusión educativa del alumnado y la convivencia</strong>.</p>
+      </div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-icon">🌍</div>
+        <h3>Un programa europeo con impacto global</h3>
+        <p>Erasmus+ nace con el objetivo de mejorar la calidad de la educación, fomentar la cooperación europea y promover valores fundamentales como la inclusión, la igualdad de oportunidades, la ciudadanía europea y el aprendizaje permanente.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">🎯</div>
+        <h3>¿Por qué Erasmus+?</h3>
+        <p>Parte de la convicción de que la experiencia educativa en otros países europeos enriquece personal y profesionalmente. Favorece el intercambio de buenas prácticas y contribuye a crear una educación más inclusiva, equitativa y de calidad.</p>
+        <ul class="bullet-list" style="margin-top:0.8rem">
+          <li>Mejora competencias personales, sociales y académicas</li>
+          <li>Refuerza el sentimiento de pertenencia a Europa</li>
+          <li>Promueve el respeto a la diversidad cultural</li>
+        </ul>
+      </div>
+
+      <div class="info-card wide">
+        <div class="info-card-icon">👥</div>
+        <h3>¿Quién puede beneficiarse?</h3>
+        <p>En el ámbito de la educación escolar, Erasmus+ ofrece oportunidades de movilidad y cooperación a toda la comunidad educativa:</p>
+        <ul class="bullet-list">
+          <li><strong>Alumnado</strong> — especialmente en proyectos inclusivos y acompañados</li>
+          <li><strong>Profesorado y personal educativo</strong> — a través de cursos de formación o job shadowing (aprendizaje por observación)</li>
+          <li><strong>Centros educativos</strong> — que fortalecen su proyecto pedagógico y su dimensión europea</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">💡</div>
+        <h3>Impacto en toda la comunidad</h3>
+        <p>Las experiencias Erasmus+ no benefician únicamente a las personas que participan directamente. Los aprendizajes adquiridos se comparten e integran en el Proyecto Educativo, las programaciones didácticas y las acciones de tutoría y convivencia.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-icon">🌱</div>
+        <h3>Nuestra prioridad: Inclusión</h3>
+        <p>Una de las prioridades clave es la inclusión y atención a las personas con menos oportunidades, entre ellas el alumnado con discapacidad, y la mejora de la convivencia en los centros educativos.</p>
+        <ul class="bullet-list" style="margin-top:0.8rem">
+          <li>Conocer buenas prácticas inclusivas en Europa</li>
+          <li>Mejorar coordinación entre docencia y orientación</li>
+          <li>Reforzar valores de respeto e igualdad</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: NOTICIAS -->
+  <div class="section" id="noticias">
+    <div class="section-header">
+      <div class="section-tag">Actualidad</div>
+      <h2 class="section-title">Noticias Erasmus+</h2>
+      <p class="section-desc">Mantente al día con las últimas novedades, experiencias y logros del proyecto Erasmus+ en nuestro centro.</p>
+    </div>
+
+    <div class="coming-soon-panel">
+      <div class="cs-icon">📰</div>
+      <div class="cs-badge">Próximamente disponible</div>
+      <h3>Espacio de Noticias en construcción</h3>
+      <p>Aquí publicaremos noticias, reportajes y crónicas sobre las experiencias Erasmus+ del IES Comuneros de Castilla. Pronto encontrarás contenido actualizado sobre todas las actividades del programa.</p>
+      <p style="margin-top:0.5rem; font-size:0.85rem; color: #9ca3af;">Este espacio está pendiente de nuevas aportaciones del equipo Erasmus del centro.</p>
+    </div>
+
+    <div class="news-placeholder" aria-hidden="true">
+      <div class="news-skeleton">
+        <div class="sk-img"></div>
+        <div class="sk-body">
+          <div class="sk-line w40"></div>
+          <div class="sk-line w85"></div>
+          <div class="sk-line w70"></div>
+          <div class="sk-line w50"></div>
+        </div>
+      </div>
+      <div class="news-skeleton">
+        <div class="sk-img"></div>
+        <div class="sk-body">
+          <div class="sk-line w40"></div>
+          <div class="sk-line w85"></div>
+          <div class="sk-line w70"></div>
+          <div class="sk-line w50"></div>
+        </div>
+      </div>
+      <div class="news-skeleton">
+        <div class="sk-img"></div>
+        <div class="sk-body">
+          <div class="sk-line w40"></div>
+          <div class="sk-line w85"></div>
+          <div class="sk-line w70"></div>
+          <div class="sk-line w50"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: CONVOCATORIAS -->
+  <div class="section" id="convocatorias">
+    <div class="section-header">
+      <div class="section-tag">Participación</div>
+      <h2 class="section-title">Convocatorias</h2>
+      <p class="section-desc">Información sobre las convocatorias abiertas y el proceso para participar en las movilidades Erasmus+ del centro.</p>
+    </div>
+
+    <div class="conv-empty">
+      <div class="ce-icon">📭</div>
+      <div>
+        <h3>Actualmente no hay convocatorias abiertas</h3>
+        <p>En este momento no existen convocatorias de movilidad activas en el IES Comuneros de Castilla. Cuando se abra un nuevo proceso de selección, aparecerá publicado en este espacio con toda la información necesaria para participar.</p>
+        <p style="margin-top:0.8rem">También puedes consultar las convocatorias generales del programa en el <a href="https://sepie.es" target="_blank" rel="noopener" style="color: var(--blue-mid); font-weight:600;">portal SEPIE</a>.</p>
+      </div>
+    </div>
+
+    <div class="conv-timeline">
+      <h3>¿Cómo funciona una convocatoria?</h3>
+      <div class="timeline-list">
+        <div class="tl-item">
+          <div class="tl-dot active">📢</div>
+          <div class="tl-content">
+            <h4>1. Publicación de la convocatoria</h4>
+            <p>El equipo Erasmus del centro publica los detalles, fechas y requisitos de participación.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot active">📝</div>
+          <div class="tl-content">
+            <h4>2. Presentación de solicitudes</h4>
+            <p>El profesorado interesado presenta su candidatura con la documentación requerida.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">✅</div>
+          <div class="tl-content">
+            <h4>3. Selección de participantes</h4>
+            <p>La comisión de selección evalúa las solicitudes según los criterios establecidos.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">✈️</div>
+          <div class="tl-content">
+            <h4>4. Preparación y movilidad</h4>
+            <p>Las personas seleccionadas reciben orientación previa y realizan la movilidad en el centro de acogida europeo.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">📊</div>
+          <div class="tl-content">
+            <h4>5. Difusión de resultados</h4>
+            <p>Los aprendizajes se comparten con el claustro y la comunidad educativa, y se publican en la web del centro.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: MOVILIDADES -->
+  <div class="section" id="movilidades">
+    <div class="section-header">
+      <div class="section-tag">Experiencias internacionales</div>
+      <h2 class="section-title">Movilidades realizadas</h2>
+      <p class="section-desc">Todas las experiencias de movilidad Erasmus+ desarrolladas por la comunidad educativa del IES Comuneros de Castilla.</p>
+    </div>
+
+    <div class="mob-summary-bar">
+      <div class="sum-card">
+        <div class="icon">✈️</div>
+        <div class="num">3</div>
+        <div class="lbl">Movilidades completadas</div>
+      </div>
+      <div class="sum-card">
+        <div class="icon">🌍</div>
+        <div class="num">3</div>
+        <div class="lbl">Países visitados</div>
+      </div>
+      <div class="sum-card">
+        <div class="icon">👥</div>
+        <div class="num">14</div>
+        <div class="lbl">Participantes totales</div>
+      </div>
+    </div>
+
+    <!-- Movilidad 1: Cecina, Italia -->
+    <div class="mobility-card">
+      <div class="mobility-header">
+        <div class="mobility-flag">🇮🇹</div>
+        <div class="mobility-meta">
+          <div class="tag-tipo">🔍 Job Shadowing</div>
+          <h3>Movilidad de aprendizaje por observación en Cecina, Italia</h3>
+          <div class="meta-row">
+            <span class="meta-item">📅 17 – 20 febrero 2025</span>
+            <span class="meta-item">🏫 Liceo Statale "Enrico Fermi"</span>
+            <span class="meta-item">📌 Curso 2024/2025</span>
+          </div>
+        </div>
+      </div>
+      <div class="mobility-body">
+        <p>Las profesoras <strong>Rosa Moral</strong> y <strong>Laura Miguel</strong> y la fisioterapeuta <strong>Inmaculada de Pedro</strong> del IES Comuneros de Castilla participaron en una movilidad de aprendizaje por observación (job shadowing) en el Liceo Statale "Enrico Fermi" de Cecina (Italia), en el marco del Programa Erasmus+ (Acción Clave 1 – Educación Escolar).</p>
+        <p>Esta movilidad se desarrolló dentro del Plan Erasmus del centro, alineado con la prioridad europea de inclusión y diversidad, y tuvo como objetivo principal conocer y analizar buenas prácticas en atención educativa al alumnado con necesidades educativas especiales, especialmente en centros ordinarios de educación secundaria.</p>
+        <p>Durante la estancia se llevaron a cabo reuniones con el equipo directivo, la responsable del programa de inclusión y el coordinador Erasmus+ del centro de acogida, así como la asistencia a clases de distintas materias. Estas actividades permitieron observar de primera mano la aplicación de apoyos inclusivos al alumnado, tanto a nivel cognitivo como motor.</p>
+        <p>La experiencia ha sentado las bases para futuras colaboraciones entre ambos centros, incluyendo la posibilidad de movilidades inclusivas de alumnado.</p>
+        <div class="mobility-participants">
+          <h4>👩‍🏫 Participantes</h4>
+          <div class="participants-list">
+            <span class="participant-chip">Rosa Moral (Profesora)</span>
+            <span class="participant-chip">Laura Miguel (Profesora)</span>
+            <span class="participant-chip">Inmaculada de Pedro (Fisioterapeuta)</span>
+          </div>
+        </div>
+        <div class="impact-pills">
+          <span class="impact-pill">✓ Buenas prácticas inclusivas</span>
+          <span class="impact-pill">✓ Colaboración interdisciplinar</span>
+          <span class="impact-pill">✓ Bases para futura colaboración</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movilidad 2: Mirandela, Portugal -->
+    <div class="mobility-card">
+      <div class="mobility-header">
+        <div class="mobility-flag">🇵🇹</div>
+        <div class="mobility-meta">
+          <div class="tag-tipo">🎒 Movilidad de Alumnado</div>
+          <h3>Movilidad de grupo de alumnado en Mirandela, Portugal</h3>
+          <div class="meta-row">
+            <span class="meta-item">📅 19 – 22 enero 2026</span>
+            <span class="meta-item">🏫 Agrupamento de Escolas de Mirandela</span>
+            <span class="meta-item">📌 Curso 2025/2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="mobility-body">
+        <p>Un grupo de alumnos del IES Comuneros de Castilla, acompañado por profesorado y personal especializado del centro, participó en una movilidad de grupo de alumnado en el Agrupamento de Escolas de Mirandela (Portugal), en el marco del Programa Erasmus+ (Acción Clave 1 – Educación Escolar).</p>
+        <p>Esta movilidad tuvo como finalidad principal ofrecer al alumnado una experiencia educativa internacional, favoreciendo el desarrollo personal, social y académico, así como el conocimiento de otras realidades educativas europeas centradas en la inclusión.</p>
+        <p>La experiencia ha contribuido significativamente al desarrollo de competencias prácticas, al aumento de la autonomía, la confianza personal y la responsabilidad del alumnado, así como al fortalecimiento de su sentimiento de pertenencia a Europa.</p>
+        <div class="mobility-participants">
+          <h4>👩‍🏫 Profesorado y personal acompañante</h4>
+          <div class="participants-list">
+            <span class="participant-chip">Rosa Moral</span>
+            <span class="participant-chip">Fabianne Camarero</span>
+            <span class="participant-chip">Santiago Rubio</span>
+            <span class="participant-chip">Inés Pascual</span>
+            <span class="participant-chip">Inmaculada de Pedro (Fisioterapeuta)</span>
+          </div>
+        </div>
+        <div class="mobility-participants" style="margin-top:0.8rem">
+          <h4>🎒 Alumnado participante</h4>
+          <div class="participants-list">
+            <span class="participant-chip alumn">Aitor Agudo</span>
+            <span class="participant-chip alumn">Carla Cuesta</span>
+            <span class="participant-chip alumn">Luna González</span>
+            <span class="participant-chip alumn">Joseph Harry Pepper</span>
+            <span class="participant-chip alumn">Claudia Huerta</span>
+            <span class="participant-chip alumn">Paula Salcedo</span>
+            <span class="participant-chip alumn">Álvaro Sanz</span>
+            <span class="participant-chip alumn">Diego Teso</span>
+          </div>
+        </div>
+        <div class="impact-pills">
+          <span class="impact-pill">✓ Autonomía del alumnado</span>
+          <span class="impact-pill">✓ Ciudadanía europea</span>
+          <span class="impact-pill">✓ Inclusión y diversidad</span>
+          <span class="impact-pill">✓ Experiencia internacional</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movilidad 3: Bagheria, Italia -->
+    <div class="mobility-card">
+      <div class="mobility-header">
+        <div class="mobility-flag">🇮🇹</div>
+        <div class="mobility-meta">
+          <div class="tag-tipo">🔍 Job Shadowing</div>
+          <h3>Job Shadowing en Bagheria, Italia</h3>
+          <div class="meta-row">
+            <span class="meta-item">📅 9 – 13 marzo 2026</span>
+            <span class="meta-item">🏫 Liceo Ginnasio Francesco Scaduto</span>
+            <span class="meta-item">📌 Curso 2025/2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="mobility-body">
+        <p>La profesora <strong>Laura Miguel</strong> realizó una movilidad de aprendizaje por observación (job shadowing) en el Liceo Ginnasio Francesco Scaduto de Bagheria (Italia). Esta actividad se encuentra plenamente alineada con el Plan Erasmus del IES Comuneros de Castilla y con las prioridades europeas de inclusión y diversidad.</p>
+        <p>El objetivo principal ha sido conocer y analizar buenas prácticas europeas en la atención educativa al alumnado con discapacidad motórica, así como observar estrategias organizativas y de convivencia que favorezcan la inclusión y la participación activa de todo el alumnado.</p>
+        <p>Durante la estancia se ha podido observar el trabajo coordinado entre el profesorado, el departamento de orientación y el personal especializado, así como la adaptación de espacios, metodologías y dinámicas de aula orientadas a garantizar una educación inclusiva y equitativa.</p>
+        <p>Se han conocido medidas específicas de mejora de la convivencia, como el uso de un panel común para la gestión de los teléfonos móviles, que contribuye a mejorar la atención, el clima de aula y la corresponsabilidad del alumnado.</p>
+        <div class="mobility-participants">
+          <h4>👩‍🏫 Participante</h4>
+          <div class="participants-list">
+            <span class="participant-chip">Laura Miguel (Profesora)</span>
+          </div>
+        </div>
+        <div class="impact-pills">
+          <span class="impact-pill">✓ Discapacidad motórica</span>
+          <span class="impact-pill">✓ Gestión convivencia</span>
+          <span class="impact-pill">✓ Prácticas transferibles</span>
+          <span class="impact-pill">✓ Inclusión integral</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movilidad 4: Viena (próximamente) -->
+    <div class="mobility-card" style="opacity:0.65">
+      <div class="mobility-header" style="background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%)">
+        <div class="mobility-flag">🇦🇹</div>
+        <div class="mobility-meta">
+          <div class="tag-tipo" style="background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.6); border-color:rgba(255,255,255,0.2);">⏳ Próximamente</div>
+          <h3>Movilidad en Viena, Austria</h3>
+          <div class="meta-row">
+            <span class="meta-item">📅 Curso 2025/2026</span>
+            <span class="meta-item">📌 Detalles por confirmar</span>
+          </div>
+        </div>
+      </div>
+      <div class="mobility-body">
+        <p>Próxima movilidad Erasmus+ en Viena (Austria). Los detalles y participantes se publicarán próximamente.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <span class="eu-logo">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</span>
+  <strong style="color:rgba(255,255,255,0.8)">IES Comuneros de Castilla</strong> · Programa Erasmus+ KA120-SCH<br>
+  Financiado por la Unión Europea · <a href="https://sepie.es" target="_blank">SEPIE – Servicio Español para la Internacionalización de la Educación</a><br>
+  <span style="font-size:0.75rem; margin-top:0.5rem; display:block">Los puntos de vista y opiniones expresados corresponden exclusivamente al IES Comuneros de Castilla y no reflejan necesariamente los de la Unión Europea ni los de la Agencia Nacional SEPIE.</span>
+</footer>
+
+<script>
+  function showSection(id, btn) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    // Remove active from all nav buttons
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    // Show target section
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      // Smooth scroll to content wrapper
+      document.querySelector('.section-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Activate button
+    if (btn) btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
