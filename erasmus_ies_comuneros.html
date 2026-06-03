@@ -37,6 +37,130 @@
     color: var(--text);
     overflow-x: hidden;
   }
+/* ── News grid ── */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* ── News card ── */
+.news-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease;
+}
+.news-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Imagen */
+.news-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+.news-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.news-card:hover .news-card-img img {
+  transform: scale(1.03);
+}
+
+/* Cuerpo */
+.news-card-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+/* Meta: etiqueta + fecha */
+.news-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.news-tag {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.news-card-meta time {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Título */
+.news-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Extracto */
+.news-card-excerpt {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Leer más / details */
+.news-card-details {
+  margin-top: 0.25rem;
+}
+.news-card-details summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #2563eb;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.news-card-details summary::-webkit-details-marker { display: none; }
+.news-card-details summary::after {
+  content: '›';
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.news-card-details[open] summary::after {
+  transform: rotate(90deg);
+}
+.news-card-full {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.news-card-full p {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.7;
+  margin: 0;
+}
+
 
   /* ── HERO ── */
   .hero {
@@ -1034,52 +1158,48 @@
   </div>
 
   <!-- SECTION: NOTICIAS -->
-  <div class="section" id="noticias">
-    <div class="section-header">
-      <div class="section-tag">Actualidad</div>
-      <h2 class="section-title">Noticias Erasmus+</h2>
-      <p class="section-desc">Mantente al día con las últimas novedades, experiencias y logros del proyecto Erasmus+ en nuestro centro.</p>
-    </div>
-
-    <div class="coming-soon-panel">
-      <div class="cs-icon">📰</div>
-      <div class="cs-badge">Próximamente disponible</div>
-      <h3>Espacio de Noticias en construcción</h3>
-      <p>Aquí publicaremos noticias, reportajes y crónicas sobre las experiencias Erasmus+ del IES Comuneros de Castilla. Pronto encontrarás contenido actualizado sobre todas las actividades del programa.</p>
-      <p style="margin-top:0.5rem; font-size:0.85rem; color: #9ca3af;">Este espacio está pendiente de nuevas aportaciones del equipo Erasmus del centro.</p>
-    </div>
-
-    <div class="news-placeholder" aria-hidden="true">
-      <div class="news-skeleton">
-        <div class="sk-img"></div>
-        <div class="sk-body">
-          <div class="sk-line w40"></div>
-          <div class="sk-line w85"></div>
-          <div class="sk-line w70"></div>
-          <div class="sk-line w50"></div>
-        </div>
-      </div>
-      <div class="news-skeleton">
-        <div class="sk-img"></div>
-        <div class="sk-body">
-          <div class="sk-line w40"></div>
-          <div class="sk-line w85"></div>
-          <div class="sk-line w70"></div>
-          <div class="sk-line w50"></div>
-        </div>
-      </div>
-      <div class="news-skeleton">
-        <div class="sk-img"></div>
-        <div class="sk-body">
-          <div class="sk-line w40"></div>
-          <div class="sk-line w85"></div>
-          <div class="sk-line w70"></div>
-          <div class="sk-line w50"></div>
-        </div>
-      </div>
-    </div>
+ <!-- SECTION: NOTICIAS -->
+<div class="section" id="noticias">
+  <div class="section-header">
+    <div class="section-tag">Actualidad</div>
+    <h2 class="section-title">Noticias Erasmus+</h2>
+    <p class="section-desc">Mantente al día con las últimas novedades, experiencias y logros del proyecto Erasmus+ en nuestro centro.</p>
   </div>
 
+  <div class="news-grid">
+
+    <!-- NOTICIA 1 -->
+    <article class="news-card">
+      <div class="news-card-img">
+        <img
+          src="http://iescomunerosdecastilla.centros.educa.jcyl.es/sitio/upload/img/II_Jornada_Autonomica_INTERNACIONALIZA_CYL_Impulsando_la_Educacion_Global_Hitos_temas_clave_y_el_impacto_del_evento_celebrado_en_Castilla_y_Leon_para_fomentar_la_innovacion_y_la_internacionalizac.png"
+          alt="Infografía de la II Jornada Autonómica INTERNACIONALIZA CYL celebrada en Valladolid"
+          loading="lazy"
+        />
+      </div>
+      <div class="news-card-body">
+        <div class="news-card-meta">
+          <span class="news-tag">Internacionalización</span>
+          <time datetime="2026-05-07">7 de mayo de 2026</time>
+        </div>
+        <h3 class="news-card-title">Laura Miguel participa en la II Jornada Autonómica INTERNACIONALIZA CYL</h3>
+        <p class="news-card-excerpt">
+          El Centro Cultural Miguel Delibes de Valladolid acogió esta jornada que reunió a unos 450 docentes de Castilla y León para compartir experiencias de innovación educativa e internacionalización. Nuestra compañera Laura Miguel representó al IES Comuneros de Castilla en un evento que abordó proyectos Erasmus+, eTwinning, movilidad internacional y el uso de las aulas del futuro.
+        </p>
+        <details class="news-card-details">
+          <summary>Leer más</summary>
+          <div class="news-card-full">
+            <p>La jornada arrancó con la ponencia inaugural de <strong>Tomasso Dalla Vecchia</strong> (European Schoolnet), que subrayó el papel de la colaboración europea en la mejora educativa. A continuación se desarrolló una primera ronda de experiencias centrada en proyectos eTwinning en Primaria, la integración de la inteligencia artificial en el ámbito internacional y los intercambios escolares.</p>
+            <p>Por la mañana también intervino <strong>Richard Tallaron</strong> (LFE Europe), con una ponencia sobre proyectos internacionales para compartir lenguas y culturas, seguida de la presentación de iniciativas impulsadas por la Consejería de Educación.</p>
+            <p>Por la tarde, una segunda ronda de experiencias abordó el proyecto POCTEP ERIS_IE, las movilidades internacionales con alumnado de Primaria y el impacto del programa OBSERVA_ACCIÓN en docentes y centros. También se reconoció la labor de centros como el IES Vía de la Plata de Guijuelo o el IES Duque de Alburquerque, que presentaron sus proyectos y celebraron sus acreditaciones europeas.</p>
+            <p>La jornada concluyó a las 17:30, reafirmando el compromiso de la comunidad educativa de Castilla y León con una enseñanza más innovadora, abierta e internacional.</p>
+          </div>
+        </details>
+      </div>
+    </article>
+
+  </div>
+</div>
   <!-- SECTION: CONVOCATORIAS -->
   <div class="section" id="convocatorias">
     <div class="section-header">
