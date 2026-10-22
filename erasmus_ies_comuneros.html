@@ -77,6 +77,16 @@
   transform: scale(1.03);
 }
 
+
+/* Imagen vertical (cartel) */
+.news-card-img--poster {
+  aspect-ratio: 3 / 4;
+  background: #f3f4f6;
+}
+.news-card-img--poster img {
+  object-fit: contain;
+}
+
 /* Cuerpo */
 .news-card-body {
   padding: 1.25rem 1.5rem 1.5rem;
@@ -1228,7 +1238,39 @@
       </div>
     </article>
 
+
+ <!-- NOTICIA 3 -->
+    <article class="news-card">
+      <div class="news-card-img news-card-img--poster">
+        <img
+          src="erasmusdays.jpg"
+          alt="Cartel de los #ErasmusDays 2026 del IES Comuneros de Castilla, con alumnado colgando una guirnalda de banderas europeas"
+          loading="lazy"
+        />
+      </div>
+      <div class="news-card-body">
+        <div class="news-card-meta">
+          <span class="news-tag">#ErasmusDays</span>
+          <time datetime="2026-10-12">12–17 de octubre de 2026</time>
+        </div>
+        <h3 class="news-card-title">Celebramos los #ErasmusDays 2026: una mirada a nuestra internacionalización</h3>
+        <p class="news-card-excerpt">
+          Los #ErasmusDays 2026 se celebraron del 12 al 17 de octubre para dar visibilidad a los proyectos Erasmus+ y compartir experiencias de movilidad y cooperación europea. El IES Comuneros de Castilla se sumó a esta semana de celebración.
+        </p>
+        <details class="news-card-details">
+          <summary>Leer más</summary>
+          <div class="news-card-full">
+            <p>Bajo el lema <strong>«Aprender y crecer: competencias para el futuro»</strong>, la iniciativa destacó cuatro ideas clave: la <strong>inclusión</strong>, la <strong>sostenibilidad</strong>, la <strong>transformación digital</strong> y la <strong>participación democrática</strong>.</p>
+            <p>Durante la semana, el centro se vistió de Europa: el alumnado colgó una guirnalda de banderas europeas en uno de los espacios comunes del instituto.</p>
+            <p>La actividad fue organizada por el <strong>Equipo de Internacionalización</strong> del IES Comuneros de Castilla, con el programa Erasmus+ cofinanciado por la Unión Europea.</p>
+          </div>
+        </details>
+      </div>
+    </article>
+
   </div>
+</div>
+
   <!-- SECTION: CONVOCATORIAS -->
   <div class="section" id="convocatorias">
     <div class="section-header">
@@ -1473,7 +1515,6 @@
     </div>
 
   </div>
-</div>
 
 <!-- FOOTER -->
 <footer class="site-footer">
